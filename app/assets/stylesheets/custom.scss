@@ -3,11 +3,14 @@ $success: #5cb85c;
 $info: #5bc0de;
 $default: #f9f9f9;
 $white: #ffffff;
+$thisgray: #cfcfcf;
 
 /* custom bootstrap buttons */
 
+
 .btn {
     padding: 14px 24px;
+    margin: 10px;
     border: 0 none;
     font-weight: 700;
     letter-spacing: 1px;
@@ -73,32 +76,53 @@ h1, .jumbotron h1 {
   letter-spacing: 10px;
   text-align: center;
 }
-.jumbotron a:hover {
-  color: $success;
-  text-decoration: none;
-}
+.jumbotron {
+  padding-bottom: 100px;
+  background-color: $thisgray;
+  }
+
 h2 {
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: #494949;
 }
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+/* links */
+a:hover {
+  color: $success;
+  text-decoration: none;
+}
+.navbar-default .navbar-nav {
+  li > a, .dropdown > .dropdown-menu > li > a  {
+    color: $primary;
+    &:hover {
+      color: $success;
+    }
+  }
+}
+
+
+/* header */
+
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 2em;
+  margin: 10px auto;
+  font-size: 40px;
+  line-height: 40px;
   color: $primary;
   letter-spacing: 10px;
-  padding-top: 5px;
   font-weight: bold;
-  &:hover {
-    color: $success;
-    text-decoration: none;
-  }
+}
+.nav a {
+  margin: 5px auto;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 0;
 }
 
 /* footer */
@@ -108,13 +132,6 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: $primary;
-  a {
-    color: $primary;
-    &:hover {
-      color: $success;
-      text-decoration: none;
-    }
-  }
   small{
     float: left;
   }
