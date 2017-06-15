@@ -1,6 +1,13 @@
-<% provide(:title, "home") %>
+<% provide(:title, "HOME") %>
 
-<h1>BLLTN</h1>
-  <p>
-    BLLTN is a place to share messages with your office, community, or other social group.
-  </p>
+<div class="center jumbotron">
+  <h1>BLLTN</h1>
+    <h2>
+      share messages with your office, community, or other social group
+    </h2>
+
+    <%= link_to "log in", '#', class: "btn btn-primary outline btn-lg" %>
+    <br>
+    <%= link_to "new? create an account", signup_path, class: "" %>
+
+</div>

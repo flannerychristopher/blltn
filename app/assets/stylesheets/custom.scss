@@ -1,0 +1,129 @@
+$primary: #428bca;
+$success: #5cb85c;
+$info: #5bc0de;
+$default: #f9f9f9;
+$white: #ffffff;
+
+/* custom bootstrap buttons */
+
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+.btn-primary {
+    background: $default;
+    color: $white;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: $success;
+}
+.btn-primary:active, .btn-primary.active {
+    background: $default;
+    box-shadow: none;
+}
+.btn.outline {
+	background: none;
+	padding: 12px 22px;
+}
+.btn-primary.outline {
+	border: 5px solid $primary;
+	color: $primary;
+}
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+	color: $success;
+	border-color: $success;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+	border-color: $default;
+	color: $default;
+  background: $default;
+}
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+section {
+  overflow: auto;
+}
+textarea {
+  resize: vertical;
+}
+.center {
+  text-align: center;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  margin-bottom: 20px;
+}
+h1, .jumbotron h1 {
+  font-weight: bold;
+  font-size: 4em;
+  color: $primary;
+  letter-spacing: 10px;
+  text-align: center;
+}
+.jumbotron a:hover {
+  color: $success;
+  text-decoration: none;
+}
+h2 {
+  font-size: 1.5em;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 2em;
+  color: $primary;
+  letter-spacing: 10px;
+  padding-top: 5px;
+  font-weight: bold;
+  &:hover {
+    color: $success;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: $primary;
+  a {
+    color: $primary;
+    &:hover {
+      color: $success;
+      text-decoration: none;
+    }
+  }
+  small{
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-right: 15px;
+    }
+  }
+}
