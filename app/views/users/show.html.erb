@@ -1,0 +1,24 @@
+<% provide(:title, @user.name) %>
+
+
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+
+      <h1>
+        <%= @user.name.gsub(/[aeiou]|\s+/i, '').upcase %>
+      </h1>
+        <p>
+          <%= @user.name %>
+        </p>
+
+        <p>
+          joined <%= time_ago_in_words(@user.created_at) %> ago
+        <br>
+          last active <%= time_ago_in_words(@user.updated_at) %> ago
+        </p>
+
+    </section>
+  </aside>
+</div>
