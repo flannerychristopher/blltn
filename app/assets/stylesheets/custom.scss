@@ -218,6 +218,14 @@ input {
   }
 }
 
+/* flash hash messages */
+
+.alert-success {
+  color: $primary;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
 /* miscellaneous */
 
 .debug_dump {

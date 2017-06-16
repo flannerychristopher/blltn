@@ -10,9 +10,9 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get help_path
     assert_select   "title",        full_title("HELP")
     assert_select   "div#accordion"
-    get signup_path
+    get join_path
     assert_template 'users/new'
-    assert_select   "title",        full_title("SIGN UP")
+    assert_select   "title",        full_title("JOIN")
   end
 
 end
