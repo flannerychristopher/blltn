@@ -21,6 +21,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "bio is an optional field" do
+    @user.bio = ""
+    assert @user.valid?
+  end
+
   test "name should not be too long" do
     @user.name = "a" * 51
     assert_not @user.valid?
@@ -28,6 +33,11 @@ class UserTest < ActiveSupport::TestCase
 
   test "email should not be too long" do
     @user.email = "a" * 244 + "@example.com"
+    assert_not @user.valid?
+  end
+
+  test "bio should not be too long" do
+    @user.bio = "b" * 256
     assert_not @user.valid?
   end
 
