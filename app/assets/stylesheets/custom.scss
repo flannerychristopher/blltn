@@ -17,46 +17,23 @@ $thisgray: #dadada;
 /* custom bootstrap buttons */
 
 .btn {
-    padding: 14px 24px;
-    margin: 10px 0;
-    border: 0 none;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  padding: 14px 24px;
+  margin: 10px 0;
+  border: 0 none;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $primary;
+  background: none;
+  border: 5px solid $primary;
+  &:hover, &:visited, &:active {
+    color: $success;
+    background: none;
+    border-color: $success;
+  }
 }
 .btn-lg {
   min-width: 200px;
-}
-.btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 0 none;
-}
-.btn-primary {
-    background: $default;
-    color: $white;
-}
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background: $success;
-}
-.btn-primary:active, .btn-primary.active {
-    background: $default;
-    box-shadow: none;
-}
-.btn.outline {
-	background: none;
-	padding: 12px 22px;
-}
-.btn-primary.outline {
-	border: 5px solid $primary;
-	color: $primary;
-}
-.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
-	color: $success;
-	border-color: $success;
-}
-.btn-primary.outline:active, .btn-primary.outline.active {
-	border-color: $default;
-	color: $default;
-  background: $default;
 }
 
 /* universal */
@@ -122,11 +99,12 @@ a:hover {
 }
 
 .nav a {
-  margin: 5px auto;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 0;
-  text-transform: uppercase;
+    margin: 5px auto;
+    font-size: 20px;
+    line-height: 20px;
+    padding: 0;
+    text-transform: uppercase;
+
 }
 
 .navbar-default .navbar-nav {
