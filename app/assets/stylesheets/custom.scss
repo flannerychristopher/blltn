@@ -106,9 +106,6 @@ a:hover {
   text-decoration: none;
 }
 
-
-
-
 /* header */
 
 #logo {
@@ -140,7 +137,6 @@ a:hover {
     a {
       text-align: right;
     }
-
     &:hover {
       color: $success;
     }
@@ -154,18 +150,15 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: $primary;
-  }
-  ul {
-    list-style: none;
+  small, ul {
     float: right;
     li {
       float: right;
       vertical-align: text-top;
       float: left;
       margin: 0 2px;
-      small {
-        float: left;
-      }
+      list-style: none;
+    }
   }
 }
 
