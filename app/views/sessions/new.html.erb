@@ -12,8 +12,12 @@
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.submit "Log in", class: "btn btn-primary outline btn-lg" %>
+
+      <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+        <span id="join-now">New user? <%= link_to "Join now!", join_path %></span>
     <% end %>
 
-    <p>New user? <%= link_to "Join now!", join_path %></p>
+
   </div>
 </div>

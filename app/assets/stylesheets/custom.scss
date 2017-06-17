@@ -105,14 +105,8 @@ a:hover {
   color: $success;
   text-decoration: none;
 }
-.navbar-default .navbar-nav {
-  li > a, .dropdown > .dropdown-menu > li > a  {
-    color: $primary;
-    &:hover {
-      color: $success;
-    }
-  }
-}
+
+
 
 
 /* header */
@@ -129,12 +123,28 @@ a:hover {
     color: $success;
   }
 }
+
 .nav a {
   margin: 5px auto;
   font-size: 20px;
   line-height: 20px;
   padding: 0;
   text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav {
+  li > a, .dropdown > .dropdown-menu > li {
+    float: right;
+    color: $primary;
+    width: 100%;
+    a {
+      text-align: right;
+    }
+
+    &:hover {
+      color: $success;
+    }
+  }
 }
 
 /* footer */
@@ -144,16 +154,18 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: $primary;
-  small{
-    float: left;
   }
   ul {
-    float: right;
     list-style: none;
+    float: right;
     li {
+      float: right;
+      vertical-align: text-top;
       float: left;
-      margin-right: 15px;
-    }
+      margin: 0 2px;
+      small {
+        float: left;
+      }
   }
 }
 
@@ -181,6 +193,9 @@ aside {
       letter-spacing: 10px;
       margin-bottom: 3px;
       margin-top: 0px;
+    }
+    li {
+      list-style: none;
     }
   }
 }
@@ -212,6 +227,22 @@ input {
   .form-control {
     color: $danger;
   }
+}
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+  vertical-align: text-bottom;
+}
+#join-now {
+  float: right;
 }
 
 /* flash hash messages */
