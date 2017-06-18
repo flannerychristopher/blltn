@@ -3,4 +3,11 @@
 john:
   name: John Lennon
   email: john@thebeatles.com
+  bio: guitarist
+  password_digest: <%= User.digest('password') %>
+
+paul:
+  name: Paul McCartney
+  email: paul@thebeatles.com
+  bio: bassist
   password_digest: <%= User.digest('password') %>

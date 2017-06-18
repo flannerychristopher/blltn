@@ -24,7 +24,7 @@
               <li><%= link_to "help",   help_path %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to "profile", current_user %></li>
-              <li><%= link_to "settings",   '#' %></li>
+              <li><%= link_to "settings", edit_user_path(current_user) %></li>
 
 
               <li><%= link_to "log out", logout_path, method: :delete %></li>

@@ -2,9 +2,9 @@
   <nav>
 
     <% if logged_in? %>
-      <span>logged in as <%= current_user.name %></span>
+      <%= link_to "logged in as #{current_user.name}", current_user %>
     <% end %>
-    
+
     <small>
       made by flan the dev
     </small>
@@ -14,19 +14,23 @@
     <ul>
       <li>
         <%= link_to image_tag("wordpress.png"),
-            "https://flanthedev.wordpress.com/", target: "_blank" %>
+            "https://flanthedev.wordpress.com/", target: "_blank",
+                                                 rel: "noopener" %>
       </li>
       <li>
         <%= link_to image_tag("github.png"),
-            "https://github.com/flanthedev", target: "_blank" %>
+            "https://github.com/flanthedev", target: "_blank",
+                                             rel: "noopener" %>
       </li>
       <li>
         <%= link_to image_tag("linkedin.png"),
-            "https://www.linkedin.com/in/chris-flan", target: "_blank" %>
+            "https://www.linkedin.com/in/chris-flan", target: "_blank",
+                                                      rel: "noopener" %>
       </li>
       <li>
         <%= link_to image_tag("twitter.png"),
-            "https://twitter.com/flanthedev", target: "_blank" %>
+            "https://twitter.com/flanthedev", target: "_blank",
+                                                 rel: "noopener" %>
       </li>
 
     </ul>
