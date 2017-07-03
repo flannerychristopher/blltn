@@ -1,0 +1,17 @@
+<%= f.label :name %>
+<%= f.text_field :name, class: 'form-control' %>
+
+<%= f.label :email %>
+<%= f.email_field :email, class: 'form-control' %>
+
+<%= f.label :avatar, 'profile photo (optional)' %>
+<%= f.file_field :avatar, class: 'form-control'  %>
+
+<%= f.label :bio,"bio (optional)" %>
+<%= f.text_area :bio, class: 'form-control' %>
+
+<%= f.label :password %>
+<%= f.password_field :password, class: 'form-control' %>
+
+<%= f.label :password_confirmation, "confirm password" %>
+<%= f.password_field :password_confirmation, class: 'form-control' %>

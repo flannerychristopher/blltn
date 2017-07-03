@@ -9,6 +9,7 @@
       </h1>
         <p>
           <%= @user.name %>
+          <br><%= image_tag current_user.avatar.url if current_user.avatar? %>
         </p>
 
         <p>
@@ -25,8 +26,6 @@
         <p>
           <%= @user.bio %>
         </p>
-
-
 
     </section>
   </aside>

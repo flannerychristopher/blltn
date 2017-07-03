@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { email.downcase! }
+  mount_uploader :avatar, AvatarUploader
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -9,6 +10,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :bio, length: { maximum: 255 }
+  validate :avatar_size
 
   #returns the hash digest of a given string
   def User.digest(string)
@@ -38,5 +40,13 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  private
+    # limits size of uploaded avatar
+    def avatar_size
+      if avatar.size > 5.megabytes
+        errors.add(:avatar, "should be less than 5mb")
+      end
+    end
 
 end
