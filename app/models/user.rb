@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :memberships
+  has_many :groups,     through: :memberships
+  
   attr_accessor :remember_token
   before_save { email.downcase! }
   mount_uploader :avatar, AvatarUploader
