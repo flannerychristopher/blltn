@@ -1,7 +1,6 @@
 class User < ApplicationRecord
-  has_many :memberships
-  has_many :groups,     through: :memberships
-  
+
+
   attr_accessor :remember_token
   before_save { email.downcase! }
   mount_uploader :avatar, AvatarUploader
@@ -14,6 +13,9 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :bio, length: { maximum: 255 }
   validate :avatar_size
+
+  # has_many :memberships
+  # has_many :groups,     through: :memberships
 
   #returns the hash digest of a given string
   def User.digest(string)

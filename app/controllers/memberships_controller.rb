@@ -9,5 +9,5 @@ class MembershipsController < ApplicationController
     def membership_params
       params.require(:membership).permit(:user_id, :group_id)
     end
-    
+
 end
