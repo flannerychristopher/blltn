@@ -1,0 +1,22 @@
+<% provide(:title, @group.name.upcase) %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+
+      <h1>
+        <%= @group.name %>
+      </h1>
+        <p>
+          <%= @group.info %>
+        </p>
+
+        <p>
+          created <%= time_ago_in_words(@group.created_at) %> ago
+        <br>
+          last active <%= time_ago_in_words(@group.updated_at) %> ago
+        </p>
+
+    </section>
+  </aside>
+</div>

@@ -27,6 +27,16 @@
           <%= @user.bio %>
         </p>
 
+        <h1>boards</h1>
+      <ul>
+        <% @user.groups.each do |group| %>
+          <li>
+            <%= link_to "#{group.name}", board_path(group) %>
+          </li>
+        <% end %>
+      </ul>
+
+
     </section>
   </aside>
 </div>

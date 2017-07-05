@@ -1,0 +1,18 @@
+<% provide(:title, "ALL BOARDS") %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+
+      <ul>
+        <% @groups.each do |group| %>
+          <li>
+            <h1><%= link_to "#{group.name}", board_path(group.id) %></h1>
+            <p><%= "#{group.info}" %></p>
+          </li>
+        <% end %>
+      </ul>
+
+    </section>
+  </aside>
+</div>
