@@ -17,7 +17,7 @@
         <li><%= link_to "home",   root_path %><span class="sr-only">(current)</span></li>
 
         <% if logged_in? %>
-          <li><%= link_to "boards", '#' %></li>
+          <li><%= link_to "boards", boards_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon glyphicon-cog" alt="settings"></span></a>
             <ul class="dropdown-menu">
@@ -28,11 +28,6 @@
 
 
               <li><%= link_to "log out", logout_path, method: :delete %></li>
-
-
-
-
-
 
             </ul>
           </li>

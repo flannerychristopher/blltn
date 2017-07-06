@@ -27,6 +27,16 @@
           <%= @user.bio %>
         </p>
 
+        <h1>boards</h1>
+          <ul>
+            <% @user.boards.each do |board| %>
+              <li>
+                <%= link_to "#{board.name}", board_path %>
+              </li>
+            <% end %>
+          </ul>
+
+
     </section>
   </aside>
 </div>

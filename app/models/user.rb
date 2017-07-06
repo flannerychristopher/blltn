@@ -12,6 +12,10 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 255 }
   validate :avatar_size
 
+
+  has_many :memberships
+  has_many :boards, through: :memberships
+
   #returns the hash digest of a given string
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
