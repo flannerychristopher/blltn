@@ -26,6 +26,8 @@
 
       <%= f.label :password_confirmation, "confirm password" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit yield(:button_text), class: "btn btn-lg" %>
     <% end %>
 
     <script type="text/javascript">

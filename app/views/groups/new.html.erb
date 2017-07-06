@@ -1,0 +1,33 @@
+<% provide(:title, 'CREATE A BOARD') %>
+<% provide(:button_text, 'CREATE') %>
+
+<h1>CREATE A BOARD</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@group, url: create_board_path) do |f| %>
+
+      <% if @group.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@group.errors.count, "error") %>.
+          </div>
+          <ul>
+          <% @group.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.label :name, "board name" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :info,"board info" %>
+      <%= f.text_area :info, class: 'form-control' %>
+
+      <%= f.submit yield(:button_text), class: "btn btn-lg" %>
+    <% end %>
+
+  </div>
+</div>
