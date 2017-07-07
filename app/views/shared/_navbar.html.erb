@@ -14,24 +14,21 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
 
-        <li><%= link_to "home",   root_path %><span class="sr-only">(current)</span></li>
-
         <% if logged_in? %>
-          <li><%= link_to "boards", boards_path %></li>
+          <li><%= link_to "home", current_user %></li>
+          <li><%= link_to "all boards", boards_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon glyphicon-cog" alt="settings"></span></a>
             <ul class="dropdown-menu">
               <li><%= link_to "help",   help_path %></li>
               <li role="separator" class="divider"></li>
-              <li><%= link_to "profile", current_user %></li>
-              <li><%= link_to "settings", edit_user_path(current_user) %></li>
-
-
+              <li><%= link_to "edit profile", edit_user_path(current_user) %></li>
               <li><%= link_to "log out", logout_path, method: :delete %></li>
 
             </ul>
           </li>
         <% else %>
+          <li><%= link_to "home",   root_path %><span class="sr-only">(current)</span></li>
           <li><%= link_to "help",   help_path %></li>
           <li><%= link_to "log in", login_path %></li>
         <% end %>

@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 255 }
   validate :avatar_size
 
-
   has_many :memberships
   has_many :boards, through: :memberships
 
