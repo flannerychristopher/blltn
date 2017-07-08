@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
 
   def create
-      Membership.create!(membership_params)
+    Membership.create!(membership_params)
   end
 
   private

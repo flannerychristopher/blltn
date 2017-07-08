@@ -38,6 +38,16 @@ class BoardsCreateTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
   end
 
+
+  test "user is admin on created board" do
+    log_in_as(@user)
+    assert_difference '@user.memberships.where(admin: true).count', 1 do
+      post boards_path, params: { board: { name:   "TEST BOARD",
+                                            info:   "a board for testing" } }
+    end
+  end
+  
+
   test "unsuccessful board create" do
     log_in_as(@user)
     get new_board_path
