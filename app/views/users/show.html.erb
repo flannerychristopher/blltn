@@ -9,7 +9,7 @@
       </h1>
         <p>
           <%= @user.name %>
-          <br><%= image_tag current_user.avatar.url if current_user.avatar? %>
+          <br><%= image_tag @user.avatar.url if @user.avatar? %>
         </p>
 
         <p>
@@ -20,7 +20,7 @@
 
         <h1>about</h1>
         <% if current_user == @user %>
-          <%= link_to "edit", edit_user_path(current_user) %>
+          <%= link_to "edit", edit_user_path(@user) %>
         <% end %>
 
         <p>
@@ -31,7 +31,7 @@
           <ul>
             <% @user.boards.each do |board| %>
               <li>
-                <%= link_to "#{board.name}", board_path %>
+                <%= link_to "#{board.name}", board_path(board) %>
               </li>
             <% end %>
           </ul>

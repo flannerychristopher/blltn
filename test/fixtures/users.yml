@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 john:
+  id: 1000
   name: John Lennon
   email: john@thebeatles.com
   bio: guitarist
   password_digest: <%= User.digest('password') %>
 
 paul:
+  id: 1001
   name: Paul McCartney
   email: paul@thebeatles.com
   bio: bassist
+  password_digest: <%= User.digest('password') %>
+
+ringo:
+  id: 1002
+  name: Ringo Starr
+  email: ringo@thebeatles.com
+  bio: drummer
   password_digest: <%= User.digest('password') %>

@@ -4,3 +4,13 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
+john:
+  user_id: 1000
+  board_id: 1000
+  admin: 1
+
+ringo:
+  user_id: 1001
+  board_id: 1000
+  admin: 0

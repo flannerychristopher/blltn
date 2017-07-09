@@ -6,5 +6,6 @@
 #
 
 thebeatles:
+  id: 1
   name: "The Beatles"
-  info: "A Band on the Run"
+  info: "lonely hearts club band"

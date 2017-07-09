@@ -29,6 +29,7 @@
           </li>
         <% else %>
           <li><%= link_to "home",   root_path %><span class="sr-only">(current)</span></li>
+          <li><%= link_to "all boards", boards_path %></li>
           <li><%= link_to "help",   help_path %></li>
           <li><%= link_to "log in", login_path %></li>
         <% end %>

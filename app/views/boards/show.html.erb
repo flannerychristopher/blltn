@@ -17,9 +17,11 @@
           last active <%= time_ago_in_words(@board.updated_at) %> ago
         </p>
 
-        <p>
-          <%= link_to "edit board", edit_board_path(@board) %>
-        </p>
+        <% if @membership.admin? %>
+          <p>
+            <%= link_to "edit board", edit_board_path(@board) %>
+          </p>
+        <% end %>
 
       <h2>admins</h2>
         <ul>
