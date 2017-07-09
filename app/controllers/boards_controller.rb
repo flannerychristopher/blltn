@@ -65,7 +65,12 @@ class BoardsController < ApplicationController
     end
 
     def admin_membership
-      @membership = Membership.find_by(board_id: params[:id].to_i, user_id: current_user.id)
+      if logged_in?
+        @membership = Membership.find_by(board_id: params[:id],
+                                user_id: current_user.id)
+      else
+        @membership = Membership.new
+      end
       redirect_to(root_url) unless @membership.admin?
     end
 

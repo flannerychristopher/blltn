@@ -11,6 +11,6 @@ john:
   admin: 1
 
 ringo:
-  user_id: 1001
+  user_id: 1002
   board_id: 1000
   admin: 0
