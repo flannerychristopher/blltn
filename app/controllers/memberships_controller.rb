@@ -8,10 +8,20 @@ class MembershipsController < ApplicationController
 
   def create
     Membership.create!(membership_params)
+    @board = Board.find(params[:membership][:board_id])
+    respond_to do |format|
+      format.html { redirect_to @board }
+      format.js
+    end
   end
 
   def destroy
     Membership.find(params[:id]).destroy
+    @board = Board.find(params[:membership][:board_id])
+    respond_to do |format|
+      format.html { redirect_to @board }
+      format.js
+    end
   end
 
   private

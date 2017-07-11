@@ -11,22 +11,14 @@
           <%= @board.info %>
         </p>
 
-
-
-
         <% if logged_in? %>
-          <% if @current_user.member?(@board) %>
-            <%= form_for(@current_user.memberships.find_by(board_id: @board.id),
-                        html: { method: :delete }) do |f| %>
-              <%= f.submit "leave group", class: "btn btn-primary" %>
+          <div id="join_form">
+            <% if @current_user.member?(@board) %>
+              <%= render 'unjoin' %>
+            <% else %>
+              <%= render 'join' %>
             <% end %>
-          <% else %>
-            <%= form_for(@membership) do |f| %>
-              <%= hidden_field_tag("membership[user_id]", @current_user.id) %>
-              <%= hidden_field_tag("membership[board_id]", @board.id) %>
-              <%= f.submit "join", class: "btn btn-primary" %>
-            <% end %>
-          <% end %>
+          </div>
         <% end %>
 
         <p>
@@ -41,24 +33,18 @@
           </p>
         <% end %>
 
-      <h2>admins</h2>
-        <ul>
-          <% @admins.each do |admin| %>
-            <li>
-              <%= link_to "#{admin.user.name}", user_path(admin.user.id) %>
-            </li>
-          <% end %>
-        </ul>
 
-
-      <h2>members</h2>
-        <ul>
-          <% @board.users.each do |user| %>
-            <li>
-              <%= link_to "#{user.name}", user_path(user) %>
-            </li>
-          <% end %>
-        </ul>
+        <h2>admins</h2>
+          <ul>
+            <% @admins.each do |admin| %>
+              <li>
+                <%= link_to "#{admin.user.name}", user_path(admin.user.id) %>
+              </li>
+            <% end %>
+          </ul>
+        <div id="members">
+          <%= render 'members' %>
+        </div>
 
     </section>
   </aside>
