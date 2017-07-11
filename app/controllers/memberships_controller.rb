@@ -11,8 +11,7 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    # Membership.find(params[:id]).destroy
-    # redirect_to users_url
+    Membership.find(params[:id]).destroy
   end
 
   private
