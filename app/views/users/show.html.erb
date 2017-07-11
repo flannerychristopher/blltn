@@ -27,6 +27,17 @@
           <%= @user.bio %>
         </p>
 
+        <% if @adminmemberships.any? %>
+          <h1>admin boards</h1>
+            <ul>
+              <% @adminmemberships.each do |membership| %>
+                <li>
+                  <%= link_to "#{membership.board.name}", board_path(membership.board) %>
+                </li>
+              <% end %>
+            </ul>
+        <% end %>
+
         <h1>boards</h1>
           <ul>
             <% @user.boards.each do |board| %>

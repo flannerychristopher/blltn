@@ -56,10 +56,8 @@ class User < ApplicationRecord
   end
 
   def member?(board)
-    # board.users.include?(@current_user)
     self.boards.include?(board)
   end
-
 
 
   private
