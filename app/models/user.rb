@@ -46,13 +46,12 @@ class User < ApplicationRecord
 
 
 
-
   def join(board)
-    board.users << @current_user
+    self.boards << board
   end
 
   def unjoin(board)
-    board.users.delete(@current_user)
+    self.boards.delete(board)
   end
 
   def member?(board)

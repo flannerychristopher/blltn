@@ -5,6 +5,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:john)
     @other_user = users(:paul)
+    @board = boards(:thebeatles)
   end
 
   test "should get new" do
@@ -38,6 +39,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                               email: @user.email } }
     assert flash.empty?
     assert_redirected_to root_url
+  end
+
+  test "should redirect membership when not logged in" do
+    post memberships_path(@board)
+    assert_redirected_to login_url
   end
 
 end

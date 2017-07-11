@@ -78,6 +78,15 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+  border-bottom: 1px solid $thisgray;
+}
+
+
 
 /* links */
 a:hover {

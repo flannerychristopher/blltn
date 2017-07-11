@@ -35,8 +35,6 @@ class BoardsController < ApplicationController
   end
 
   def edit
-    # @board = Board.find(params[:id])
-    # @membership = @board.memberships.where(user_id: current_user)
   end
 
   def update

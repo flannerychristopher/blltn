@@ -83,8 +83,18 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "authenticated? chould return false for a user with nil digest" do
+  test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?('')
+  end
+
+  test "can join and unjoin boards" do
+    paul = users(:paul)
+    board = boards(:thebeatles)
+    assert_not paul.member?(board)
+    paul.join(board)
+    assert paul.member?(board)
+    paul.unjoin(board)
+    assert_not paul.member?(board)
   end
 
 end
