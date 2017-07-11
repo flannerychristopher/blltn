@@ -44,6 +44,24 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+
+
+
+  def join(board)
+    board.users << @current_user
+  end
+
+  def unjoin(board)
+    board.users.delete(@current_user)
+  end
+
+  def member?(board)
+    # board.users.include?(@current_user)
+    self.boards.include?(board)
+  end
+
+
+
   private
     # limits size of uploaded avatar
     def avatar_size
