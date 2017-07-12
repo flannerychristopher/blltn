@@ -22,30 +22,27 @@ class MembershipsTest < ActionDispatch::IntegrationTest
     log_in_as(@paul)
     assert_difference '@paul.memberships.count', 1 do
       post memberships_path, xhr: true, params: {
-                                       membership: { user_id: @paul.id,
+                                        membership: { user_id: @paul.id,
                                                      board_id: @board.id } }
     end
   end
 
   test "should unjoin in standard way" do
-    log_in_as(@paul)
-    assert_difference '@paul.memberships.count', 1 do
-      post memberships_path, params: {
-                             membership: { user_id: @paul.id,
-                                           board_id: @board.id } }
-    end
-
+    log_in_as(@john)
     @membership = Membership.where(user_id: @paul.id, board_id: @board.id)
+    @current_user = @john
     assert_difference 'Membership.count', -1 do
       # delete membership_path(membership)
-      delete membership_path(@johnmembership), params: { id: @johnmembership.id }
+      delete membership_path(@johnmembership), params: {
+                              membership: { board_id: @board.id } }
     end
   end
 
   test "should unjoin with AJAX" do
     log_in_as(@john)
-    assert_difference 'Membership.count', 1 do
-      delete membership_path(@johnmembership), xhr: true, params: { id: @johnmembership.id }
+    assert_difference 'Membership.count', -1 do
+      delete membership_path(@johnmembership), xhr: true,
+                              params: { membership: { board_id: @board.id } }
     end
   end
 
