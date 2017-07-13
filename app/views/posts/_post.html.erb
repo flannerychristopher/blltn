@@ -5,4 +5,10 @@
     posted <%= time_ago_in_words(post.created_at) %> ago
     to <%= link_to post.board.name, post.board %>
   </span>
+
+  <% if @current_user == post.user %>
+    <%= link_to "delete post", post, method: :delete,
+                                     data: { confirm: "are you sure?" } %>
+  <% end %>
+
 </li>

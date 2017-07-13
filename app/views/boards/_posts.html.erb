@@ -8,6 +8,13 @@
           posted <%= time_ago_in_words(post.created_at) %> ago
           by <%= link_to post.user.name, post.user %>
         </span>
+
+        <!-- <%= render 'shared/post_delete' if @current_user == post.user %> -->
+        <% if @current_user == post.user %>
+          <%= link_to "delete post", post, method: :delete,
+                                           data: { confirm: "are you sure?" } %>
+        <% end %>
+
       </li>
     <% end %>
   </ol>
