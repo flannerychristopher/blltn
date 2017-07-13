@@ -97,4 +97,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not paul.member?(board)
   end
 
+  test "users posts destroyed when user is destroyed" do
+    @user.save
+    @user.posts.create!(board_id: 1000, content: "test post")
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
+  end
+
 end

@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_many :memberships
   has_many :boards, through: :memberships
+  has_many :posts, dependent: :destroy
 
   #returns the hash digest of a given string
   def User.digest(string)

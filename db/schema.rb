@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706004425) do
+ActiveRecord::Schema.define(version: 20170713031646) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20170706004425) do
     t.index ["board_id"], name: "index_memberships_on_board_id"
     t.index ["user_id", "board_id"], name: "index_memberships_on_user_id_and_board_id", unique: true
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id", "created_at"], name: "index_posts_on_board_id_and_created_at"
+    t.index ["board_id"], name: "index_posts_on_board_id"
+    t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
