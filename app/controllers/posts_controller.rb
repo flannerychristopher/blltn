@@ -6,10 +6,16 @@ class PostsController < ApplicationController
     @board = Board.find(params[:post][:board_id])
     if @post.save
       flash[:success] = "post created"
-      redirect_to @board
+      #redirect_to @board
+      respond_to do |format|
+        format.html { redirect_to @board }
+        format.js
+      end      
     else
-      #render 'static_pages/home'
+      flash[:danger] = "post not created"
+      redirect_to @board
     end
+
   end
 
   def destroy

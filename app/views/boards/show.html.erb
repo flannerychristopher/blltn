@@ -53,11 +53,11 @@
     <%= render 'shared/post_form' %>
 
     <% if @board.posts.any? %>
-      <h3>Posts (<%= @board.posts.count %>) </h3>
-      <ol>
-        <%= render @posts %>
-      </ol>
+      <div id="posts">
+        <%= render 'posts' %>
+      </div>
     <% end %>
+
   </aside>
 
 </div>
