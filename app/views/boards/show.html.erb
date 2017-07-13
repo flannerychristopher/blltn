@@ -7,9 +7,7 @@
       <h1>
         <%= @board.name %>
       </h1>
-        <p>
-          <%= @board.info %>
-        </p>
+        <p><%= @board.info %></p>
 
         <% if logged_in? %>
           <div id="join_form">
@@ -33,19 +31,33 @@
           </p>
         <% end %>
 
-
-        <h2>admins</h2>
-          <ul>
+        <h3>admins</h3>
+          <ol>
             <% @admins.each do |admin| %>
               <li>
                 <%= link_to "#{admin.user.name}", user_path(admin.user.id) %>
               </li>
             <% end %>
-          </ul>
-        <div id="members">
-          <%= render 'members' %>
-        </div>
+          </ol>
+
+          <div id="members">
+            <%= render 'members' %>
+          </div>
+
 
     </section>
   </aside>
+
+  <aside class="col-md-8">
+
+    <%= render 'shared/post_form' %>
+
+    <% if @board.posts.any? %>
+      <h3>Posts (<%= @board.posts.count %>) </h3>
+      <ol>
+        <%= render @posts %>
+      </ol>
+    <% end %>
+  </aside>
+
 </div>

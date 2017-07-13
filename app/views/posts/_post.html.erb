@@ -1,0 +1,9 @@
+<li>
+  <span><%= post.content %></span>
+  <br>
+  <span>
+    posted <%= time_ago_in_words(post.created_at) %> ago
+    by <%= link_to post.user.name, post.user %>
+    to <%= link_to post.board.name, post.board %>
+  </span>
+</li>

@@ -12,11 +12,14 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @post = Post.new
+    @posts = @board.posts
+    @users = @board.users
     @admins = @board.memberships.where(admin: true)
 
     if logged_in? && @board.users.include?(current_user)
       @membership = Membership.find_by(board_id: params[:id],
-                              user_id: current_user.id)
+                               user_id: current_user.id)
     else
       @membership = Membership.new
     end

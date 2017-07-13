@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @adminmemberships = Membership.where(user_id: @user.id,
                                          admin: true)
+    @posts = @user.posts
+    @boards = @user.boards
   end
 
   def new

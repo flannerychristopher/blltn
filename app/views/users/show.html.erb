@@ -18,7 +18,7 @@
           last active <%= time_ago_in_words(@user.updated_at) %> ago
         </p>
 
-        <h1>about</h1>
+        <h3>about</h3>
         <% if current_user == @user %>
           <%= link_to "edit", edit_user_path(@user) %>
         <% end %>
@@ -28,26 +28,34 @@
         </p>
 
         <% if @adminmemberships.any? %>
-          <h1>admin boards</h1>
-            <ul>
+          <h3>admin boards</h3>
+            <ol>
               <% @adminmemberships.each do |membership| %>
                 <li>
                   <%= link_to "#{membership.board.name}", board_path(membership.board) %>
                 </li>
               <% end %>
-            </ul>
+            </ol>
         <% end %>
 
-        <h1>boards</h1>
-          <ul>
-            <% @user.boards.each do |board| %>
-              <li>
-                <%= link_to "#{board.name}", board_path(board) %>
-              </li>
-            <% end %>
-          </ul>
-
+        <% if @user.boards.any? %>
+          <h3>Boards</h3>
+          <ol>
+            <%= render @boards %>
+          </ol>
+        <% end %>
 
     </section>
+  </aside>
+
+  <aside class="col-md-8">
+
+    <% if @user.posts.any? %>
+      <h3>Posts (<%= @user.posts.count %>) </h3>
+      <ol>
+        <%= render @posts %>
+      </ol>
+    <% end %>
+
   </aside>
 </div>

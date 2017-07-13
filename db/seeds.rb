@@ -48,3 +48,11 @@ boards.each do |board|
                        user_id:   user_id)
   end
 end
+
+#posts
+
+users = User.order(:created_at).take(10)
+100.times do
+  content = Faker::Lorem.sentence(20)
+  users.each { |user| user.posts.create!(content: content, board_id: rand(19) + 1 ) }
+end
