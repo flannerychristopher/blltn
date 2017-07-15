@@ -74,12 +74,4 @@ module SessionsHelper
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    def user_is_member
-
-      @membership = current_user.memberships.find_by(board_id: params[:post][:board_id])
-      @board = Board.find_by(id: params[:post][:board_id])
-      flash[:danger] = "please join board to post"
-      redirect_to @board if @membership.nil?
-    end
-
 end

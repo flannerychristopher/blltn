@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if logged_in? %>
-          <li><%= link_to "home", current_user %></li>
+          <li><%= link_to "profile", current_user %></li>
           <li><%= link_to "all boards", boards_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon glyphicon-cog" alt="settings"></span></a>

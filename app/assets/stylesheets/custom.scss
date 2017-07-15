@@ -17,6 +17,7 @@ $thisgray: #d2d2d2;
 /* custom bootstrap buttons */
 
 .btn {
+  border-radius: 20px;
   padding: 14px 24px;
   margin: 10px 0;
   border: 0 none;
@@ -78,12 +79,22 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+/* lists */
+
 ul, ol {
   padding: 0;
 }
 li {
   list-style: none;
   border-bottom: 1px solid $thisgray;
+  .avatar {
+    height: auto;
+    max-height: 32px;
+    width: auto;
+    max-width: 32px;
+    border-radius: 20px
+  }
 }
 
 

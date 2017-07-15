@@ -7,6 +7,9 @@
         <span>
           posted <%= time_ago_in_words(post.created_at) %> ago
           by <%= link_to post.user.name, post.user %>
+          <% if post.user.avatar? %>
+            <%= link_to avatar_for(post.user), size: 50 %>
+          <% end %>
         </span>
 
         <% if @current_user == post.user %>

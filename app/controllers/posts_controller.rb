@@ -38,4 +38,12 @@ class PostsController < ApplicationController
       redirect_to root_url if @post.nil?
     end
 
+    def user_is_member
+      @membership = current_user.memberships.find_by(board_id: params[:post][:board_id])
+      @board = Board.find_by(id: params[:post][:board_id])
+
+      redirect_to @board if @membership.nil?
+      flash[:danger] = "please join board to post"
+    end
+
 end
