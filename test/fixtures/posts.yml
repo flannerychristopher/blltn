@@ -6,26 +6,27 @@
 #
 
 revolver:
-  user: john
-  board: thebeatles
+  id: 5000
+  user_id: 1000
+  board_id: 1000
   content: "probably my favorite"
   created_at: <%= 10.minutes.ago %>
 
 sargent:
-  user: john
-  board: thebeatles
+  user_id: 1000
+  board_id: 1000
   content: "lonely hearts club band"
   created_at: <%= 3.years.ago %>
 
 white:
-  user: ringo
-  board: thebeatles
+  user_id: 1000
+  board_id: 1000
   content: "can I play on this one?"
   created_at: <%= 1.hour.ago %>
 
 most_recent:
-  user: john
-  board: thebeatles
+  user_id: 1000
+  board_id: 1000
   content: "test for most recent post"
   created_at: <%= Time.zone.now %>
 
@@ -33,6 +34,6 @@ most_recent:
 post_<%= n %>:
   content: <%= Faker::Lorem.sentence(20) %>
   created_at: <%= 1.hour.ago %>
-  user: john
-  board: thebeatles
+  user_id: 1000
+  board_id: 1000
 <% end %>

@@ -51,10 +51,9 @@
   <aside class="col-md-8">
 
     <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>) </h3>
-      <ol>
-        <%= render @posts %>
-      </ol>
+      <div id="userposts">
+        <%= render 'posts' %>
+      </div>
     <% end %>
 
   </aside>

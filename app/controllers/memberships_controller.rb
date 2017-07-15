@@ -3,7 +3,6 @@ class MembershipsController < ApplicationController
   before_action :correct_user,      only: :destroy
 
   def new
-    # @membership = Membership.new
   end
 
   def create

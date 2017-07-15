@@ -13,8 +13,7 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @post = Post.new
-    @posts = @board.posts
-    @users = @board.users
+    # @users = @board.users
     @admins = @board.memberships.where(admin: true)
 
     if logged_in? && @board.users.include?(current_user)

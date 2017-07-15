@@ -1,12 +1,12 @@
-<h3>Posts (<%= @board.posts.count %>) </h3>
+<h3>Posts (<%= @user.posts.count %>) </h3>
   <ol>
-    <% @board.posts.each do |post| %>
+    <% @user.posts.each do |post| %>
       <li>
         <span><%= post.content %></span>
         <br>
         <span>
           posted <%= time_ago_in_words(post.created_at) %> ago
-          by <%= link_to post.user.name, post.user %>
+          to <%= link_to post.board.name, post.board %>
         </span>
 
         <% if @current_user == post.user %>
