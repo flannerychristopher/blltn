@@ -1,22 +1,21 @@
-<h3>Posts (<%= @board.posts.count %>) </h3>
-  <ol>
-    <% @board.posts.where('created_at >= ?', 1.day.ago).each do |post| %>
-      <li>
-        <span><%= post.content %></span>
-        <br>
-        <span>
-          posted <%= time_ago_in_words(post.created_at) %> ago
-          by <%= link_to post.user.name, post.user %>
-          <% if post.user.avatar? %>
-            <%= link_to avatar_for(post.user), size: 50 %>
-          <% end %>
-        </span>
-
-        <% if @current_user == post.user %>
-          <%= link_to "delete post", post, method: :delete,
-                                           data: { confirm: "are you sure?" } %>
+<ol>
+  <% @board.posts.where('created_at >= ?', 1.day.ago).each do |post| %>
+    <li>
+      <span><%= post.content %></span>
+      <br>
+      <span>
+        posted <%= time_ago_in_words(post.created_at) %> ago
+        by <%= link_to post.user.name, post.user %>
+        <% if post.user.avatar? %>
+          <%= link_to avatar_for(post.user), size: 50 %>
         <% end %>
+      </span>
 
-      </li>
-    <% end %>
-  </ol>
+      <% if @current_user == post.user %>
+        <%= link_to "delete post", post, method: :delete,
+                                         data: { confirm: "are you sure?" } %>
+      <% end %>
+
+    </li>
+  <% end %>
+</ol>

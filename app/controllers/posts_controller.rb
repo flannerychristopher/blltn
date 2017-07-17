@@ -42,8 +42,10 @@ class PostsController < ApplicationController
       @membership = current_user.memberships.find_by(board_id: params[:post][:board_id])
       @board = Board.find_by(id: params[:post][:board_id])
 
-      redirect_to @board if @membership.nil?
-      flash[:danger] = "please join board to post"
+      if @membership.nil?
+        redirect_to @board
+        flash[:danger] = "please join board to post"
+      end
     end
 
 end
