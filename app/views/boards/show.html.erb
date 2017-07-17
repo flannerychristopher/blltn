@@ -50,8 +50,11 @@
 
   <aside class="col-md-8">
 
-    <%= render 'shared/post_create' %>
-
+    <% if logged_in? %>
+      <div id="post_create">
+        <%= render 'shared/post_create' %>
+      </div>
+    <% end %>
     <% if @board.posts.any? %>
       <div id="boardposts">
         <%= render 'posts' %>

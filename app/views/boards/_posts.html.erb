@@ -1,6 +1,6 @@
 <h3>Posts (<%= @board.posts.count %>) </h3>
   <ol>
-    <% @board.posts.each do |post| %>
+    <% @board.posts.where('created_at >= ?', 1.day.ago).each do |post| %>
       <li>
         <span><%= post.content %></span>
         <br>

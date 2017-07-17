@@ -1,7 +1,7 @@
 <%= form_for(@post, remote: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.text_area :content, placeholder: "write a new post..." %>
+  <%= f.text_area :content, id: "comment_body", placeholder: "write a new post..." %>
   <%= hidden_field_tag("post[board_id]", @board.id) %>
 
   <%= f.submit "Post", class: "btn btn-primary" %>
