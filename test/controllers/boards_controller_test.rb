@@ -68,5 +68,30 @@ class BoardsControllerTest < ActionDispatch::IntegrationTest
     assert_equal newinfo, @thebeatles.info
   end
 
+  test "should redirect destroy board when not logged in" do
+    assert_no_difference 'Board.count' do
+      delete board_path(@thebeatles), params: { board: { id: @thebeatles.id } }
+    end
+    assert_redirected_to login_url
+  end
+
+  test "should redirect destroy board when not admin user" do
+    log_in_as(@ringo)
+    assert_no_difference 'Board.count' do
+      delete board_path(@thebeatles), params: { board: { id: @thebeatles.id } }
+    end
+    assert_redirected_to root_url
+  end
+
+  test "admin can delete board and dependent memberships" do
+    log_in_as(@john)
+    assert_difference 'Board.count', -1 do
+      delete board_path(@thebeatles), params: { board: { id: @thebeatles.id } }
+    end
+    assert_not Membership.where(user_id: @john.id).any?
+    assert_not Membership.where(user_id: @ringo.id).any?
+    assert_redirected_to user_path(@john)
+  end
+
 
 end

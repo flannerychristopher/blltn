@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
-  before_action :logged_in_user,        only: [:new, :create, :edit, :update]
-  before_action :admin_membership,      only: [:edit, :update]
+  before_action :logged_in_user,        only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_membership,      only: [:edit, :update, :destroy]
 
   def index
     @boards = Board.all
@@ -17,7 +17,7 @@ class BoardsController < ApplicationController
 
     if logged_in? && @board.users.include?(current_user)
       @membership = Membership.find_by(board_id: params[:id],
-                               user_id: current_user.id)
+                                       user_id: current_user.id)
     else
       @membership = Membership.new
     end
@@ -39,13 +39,19 @@ class BoardsController < ApplicationController
   end
 
   def update
-    @board = Board.find(params[:id])
+    # @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
       flash[:success] = "Board updated"
       redirect_to @board
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @board.destroy
+    flash[:success] = "board deleted"
+    redirect_to user_path(current_user)
   end
 
   private
@@ -68,7 +74,7 @@ class BoardsController < ApplicationController
 
       if logged_in? && @board.users.include?(current_user)
         @membership = Membership.find_by(board_id: params[:id],
-                                user_id: current_user.id)
+                                         user_id: current_user.id)
       else
         @membership = Membership.new
       end

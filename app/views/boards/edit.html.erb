@@ -1,5 +1,4 @@
 <% provide(:title, "EDIT BOARD") %>
-<% provide(:button_text, "update") %>
 
 <h1>edit board</h1>
 
@@ -15,12 +14,15 @@
       <%= f.label :info %>
       <%= f.text_area :info, class: 'form-control' %>
 
-      <%= f.submit yield(:button_text), class: "btn btn-lg" %>
+      <%= f.submit "update board", class: "btn btn-lg" %>
     <% end %>
 
-    <p>
-      <%= link_to "back to board", board_path(@board) %>
-    </p>
+      <%= button_to "delete board", @board, method: :delete,
+                                    class: 'btn btn-lg',
+                                    data: { confirm: "are you sure?" } %>
+
+      <%= button_to "back to board", board_path(@board),
+                                     method: :get, class: "btn btn-lg" %>
 
   </div>
 </div>

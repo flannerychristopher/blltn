@@ -4,8 +4,8 @@ class MembershipsTest < ActionDispatch::IntegrationTest
 
   def setup
     @paul = users(:paul)
-    @john = users(:john)
-    @johnmembership = memberships(:john)
+    @ringo = users(:ringo)
+    @ringomembership = memberships(:ringo)
     @board = boards(:thebeatles)
   end
 
@@ -28,17 +28,17 @@ class MembershipsTest < ActionDispatch::IntegrationTest
   end
 
   test "should unjoin in standard way" do
-    log_in_as(@john)
+    log_in_as(@ringo)
     assert_difference 'Membership.count', -1 do
-      delete membership_path(@johnmembership), params: {
+      delete membership_path(@ringomembership), params: {
                               membership: { board_id: @board.id } }
     end
   end
 
   test "should unjoin with AJAX" do
-    log_in_as(@john)
+    log_in_as(@ringo)
     assert_difference 'Membership.count', -1 do
-      delete membership_path(@johnmembership), xhr: true,
+      delete membership_path(@ringomembership), xhr: true,
                               params: { membership: { board_id: @board.id } }
     end
   end
