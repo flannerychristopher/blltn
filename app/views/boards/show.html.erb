@@ -1,3 +1,4 @@
+
 <% provide(:title, @board.name.upcase) %>
 
 <div class="row">
@@ -11,7 +12,7 @@
         <% if @membership.admin? %>
           <%= link_to "edit board", edit_board_path(@board) %>
         <% end %>
-        <% if logged_in? %>
+        <% if logged_in? && !@membership.admin? %>
           <div id="join_form">
             <% if @current_user.member?(@board) %>
               <%= render 'unjoin' %>
@@ -38,11 +39,9 @@
         <%= render 'shared/post_create' %>
       </div>
     <% end %>
-    <% if @board.posts.any? %>
-      <div id="boardposts">
-        <%= render 'posts' %>
-      </div>
-    <% end %>
+    <div id="boardposts">
+      <%= render 'posts' %>
+    </div>
 
   </aside>
 
