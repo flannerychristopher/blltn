@@ -14,6 +14,7 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @post = Post.new
     @admins = @board.memberships.where(admin: true)
+    @current_user = current_user
 
     if logged_in? && @board.users.include?(current_user)
       @membership = Membership.find_by(board_id: params[:id],
@@ -39,7 +40,6 @@ class BoardsController < ApplicationController
   end
 
   def update
-    # @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
       flash[:success] = "Board updated"
       redirect_to @board
@@ -49,7 +49,7 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    @board.destroy
+    @board.destroy if !@board.nil?
     flash[:success] = "board deleted"
     redirect_to user_path(current_user)
   end

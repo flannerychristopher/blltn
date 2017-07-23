@@ -4,8 +4,7 @@ class PostsController < ApplicationController
   before_action :user_is_member,  only: [:create]
 
   def create
-    @post = @current_user.posts.build(post_params)
-    @board = Board.find(params[:post][:board_id])
+    @post = current_user.posts.build(post_params)
     if @post.save
       respond_to do |format|
         format.html { redirect_to @board }
@@ -19,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    @post.destroy if !@post.nil?
     respond_to do |format|
       format.html { redirect_to request.referrer || root_url }
       format.js
@@ -34,17 +33,19 @@ class PostsController < ApplicationController
     end
 
     def correct_user
-      @post = @current_user.posts.find_by(id: params[:id])
+      @post = current_user.posts.find_by(id: params[:id])
       redirect_to root_url if @post.nil?
     end
 
     def user_is_member
       @membership = current_user.memberships.find_by(board_id: params[:post][:board_id])
-      @board = Board.find_by(id: params[:post][:board_id])
-
+      
       if @membership.nil?
+        @board = Board.find_by(id: params[:post][:board_id])
         redirect_to @board
         flash[:danger] = "please join board to post"
+      else
+        @board = @membership.board
       end
     end
 

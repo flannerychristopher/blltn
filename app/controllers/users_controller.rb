@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @adminmemberships = Membership.where(user_id: @user.id,
-                                         admin: true)
+    @adminmemberships = @user.memberships.where(admin: true)
     @posts = @user.posts
     @boards = @user.boards
   end

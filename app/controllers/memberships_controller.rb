@@ -6,8 +6,8 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    Membership.create!(membership_params)
-    @board = Board.find(params[:membership][:board_id])
+    @membership = Membership.create!(membership_params)
+    @board = @membership.board
     respond_to do |format|
       format.html { redirect_to @board }
       format.js
@@ -15,10 +15,8 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    # Membership.find(params[:id]).destroy
-    @board = Board.find(params[:membership][:board_id])
-    membership = Membership.find_by(user_id: @current_user.id, board_id: @board.id)
-    membership.destroy if !membership.admin?
+    @board = @membership.board
+    @membership.destroy if !@membership.admin?
     respond_to do |format|
       format.html { redirect_to @board }
       format.js
