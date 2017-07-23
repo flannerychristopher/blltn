@@ -1,5 +1,4 @@
 <% provide(:title, 'JOIN') %>
-<% provide(:button_text, 'submit') %>
 
 <h1>join</h1>
 
@@ -26,6 +25,8 @@
 
       <%= f.label :password_confirmation, "confirm password" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "join", class: "btn btn-lg" %>
     <% end %>
 
     <script type="text/javascript">

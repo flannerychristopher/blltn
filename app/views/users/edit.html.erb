@@ -1,5 +1,4 @@
 <% provide(:title, "EDIT PROFILE") %>
-<% provide(:button_text, "update") %>
 
 <h1>edit profile</h1>
 
@@ -27,7 +26,7 @@
       <%= f.label :password_confirmation, "confirm password" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit yield(:button_text), class: "btn btn-lg" %>
+      <%= f.submit "update", class: "btn btn-lg" %>
     <% end %>
 
     <script type="text/javascript">

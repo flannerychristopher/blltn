@@ -1,4 +1,4 @@
-<%= form_for(@current_user.memberships.find_by(board_id: @board.id),
+<%= form_for(current_user.memberships.find_by(board_id: @board.id),
             html: { method: :delete },
             remote: true) do |f| %>
 

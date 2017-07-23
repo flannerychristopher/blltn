@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
     def user_is_member
       @membership = current_user.memberships.find_by(board_id: params[:post][:board_id])
-      
+
       if @membership.nil?
         @board = Board.find_by(id: params[:post][:board_id])
         redirect_to @board
