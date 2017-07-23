@@ -15,6 +15,8 @@ gem 'mini_magick', '~> 4.7', '>= 4.7.2'
 gem 'fog', '~> 1.40'
 gem 'faker', '~> 1.7', '>= 1.7.3'
 gem 'exception_handler', '~> 0.7.7.0'
+gem 'webpacker', '~> 2.0'
+
 # Use sqlite3 as the database for Active Record
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
