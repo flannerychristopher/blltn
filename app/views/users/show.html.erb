@@ -9,11 +9,8 @@
       </h1>
         <p>
           <%= @user.name %>
+          <br>joined <%= time_ago_in_words(@user.created_at) %> ago
           <br><%= image_tag @user.avatar.url if @user.avatar? %>
-        </p>
-
-        <p>
-          joined <%= time_ago_in_words(@user.created_at) %> ago
         </p>
 
         <h3>about</h3>
