@@ -13,8 +13,8 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @post = Post.new
+    @posts = Post.today
     @admins = @board.memberships.where(admin: true)
-    @current_user = current_user
 
     if logged_in? && @board.users.include?(current_user)
       @membership = Membership.find_by(board_id: params[:id],
@@ -28,11 +28,12 @@ class BoardsController < ApplicationController
   def create
    @board = Board.new(board_params)
    if @board.save
-     create_admin(current_user)
-     flash[:success] = "board created"
-     redirect_to board_path(@board)
+      create_admin(current_user)
+      flash[:success] = "board created"
+      redirect_to @board
    else
-     render 'new'
+      puts @board.errors.full_messages
+      render :new
    end
   end
 

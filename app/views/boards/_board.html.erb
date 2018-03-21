@@ -1,3 +1,7 @@
-<li>
-  <%= link_to board.name, board_path(board) %>
-</li>
+<div class='well well-sm'>
+  <strong><%= link_to board.name, board %></strong>
+  <br />
+  <span>
+    <%= truncate board.info, length: controller_name == 'boards' ? 104 : 36 %>
+  </span>
+</div>

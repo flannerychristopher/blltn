@@ -2,18 +2,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-
       <p><%= link_to "Create a Board", new_board_path %></p>
-
-      <ul>
-        <% @boards.each do |board| %>
-          <li>
-            <h3><%= link_to "#{board.name}", board_path(board.id) %></h3>
-            <p><%= "#{board.info}" %></p>
-          </li>
-        <% end %>
-      </ul>
-
-    </section>
+      <%= render @boards %>
   </div>
 </div>

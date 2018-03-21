@@ -1,7 +1,5 @@
-<%= form_for(current_user.memberships.find_by(board_id: @board.id),
-            html: { method: :delete },
-            remote: true) do |f| %>
-
-  <%= hidden_field_tag("membership[board_id]", @board.id) %>
+<%= form_with model: @membership,
+              method: :delete,
+              remote: true do |f| %>
   <%= f.submit "leave group", class: "btn btn-primary" %>
 <% end %>

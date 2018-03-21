@@ -1,0 +1,12 @@
+<%= form_with model: board do |f| %>
+
+  <%= render 'shared/error_messages', object: board %>
+
+  <%= f.label :name, "board name" %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :info,"board info" %>
+  <%= f.text_area :info, class: 'form-control' %>
+
+ <%= f.submit (button_text || 'EDIT'), class: "btn btn-lg" %>
+<% end %>

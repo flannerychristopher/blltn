@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @adminmemberships = @user.memberships.where(admin: true)
     @posts = @user.posts
     @boards = @user.boards
+    @admin_boards = @boards.joins(:memberships).where(memberships: { admin: true } )
   end
 
   def new

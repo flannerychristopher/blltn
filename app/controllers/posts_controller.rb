@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     if @post.save
       respond_to do |format|
         format.html { redirect_to @board }
-        format.js
+        format.js { render partial: 'posts/posts' }
       end
     else
       flash[:danger] = "post not created"

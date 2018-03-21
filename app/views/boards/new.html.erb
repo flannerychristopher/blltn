@@ -1,22 +1,10 @@
-<% provide(:title, 'CREATE A BOARD') %>
-<% provide(:button_text, 'CREATE') %>
+<% provide(:title, "CREATE BOARD") %>
 
 <h1>CREATE A BOARD</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@board) do |f| %>
-
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :name, "board name" %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :info,"board info" %>
-      <%= f.text_area :info, class: 'form-control' %>
-
-      <%= f.submit yield(:button_text), class: "btn btn-lg" %>
-    <% end %>
-
+    <%= @board.errors.full_messages %>
+    <%= render 'boards/form', board: @board, button_text: 'CREATE' %>
   </div>
 </div>

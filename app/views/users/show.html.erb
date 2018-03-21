@@ -22,22 +22,15 @@
           <%= @user.bio %>
         </p>
 
-        <% if @adminmemberships.any? %>
+        <% if @admin_boards.any? %>
           <h3>admin boards</h3>
-            <ol>
-              <% @adminmemberships.each do |membership| %>
-                <li>
-                  <%= link_to "#{membership.board.name}", board_path(membership.board) %>
-                </li>
-              <% end %>
-            </ol>
+
+          <%= render 'boards/boards', boards: @admin_boards %>
         <% end %>
 
         <% if @user.boards.any? %>
           <h3>Boards</h3>
-          <ol>
-            <%= render @boards %>
-          </ol>
+          <%= render @boards %>
         <% end %>
 
     </section>
@@ -47,7 +40,7 @@
 
     <% if @user.posts.any? %>
       <div id="userposts">
-        <%= render 'posts' %>
+        <%= render @posts %>
       </div>
     <% end %>
 
