@@ -1,35 +1,35 @@
-
 <% provide(:title, @board.name.upcase) %>
 
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
 
-      <h1><%= @board.name %></h1>
-        <p><%= @board.info %></p>
-        <p>created <%= time_ago_in_words(@board.created_at) %> ago</p>
+    <div id='board'>
+      <%= render @board %>
 
-        <% if @membership.admin? %>
-          <%= link_to "edit board", edit_board_path(@board) %>
+      <% if @membership.admin? %>
+        <%= link_to "edit board", edit_board_path(@board), remote: true %>
+      <% end %>
+    </div>
+    
+    <% if logged_in? && !@membership.admin? %>
+      <div id="join_form">
+        <% if current_user.member?(@board) %>
+          <%= render 'unjoin' %>
+        <% else %>
+          <%= render 'join' %>
         <% end %>
-        <% if logged_in? && !@membership.admin? %>
-          <div id="join_form">
-            <% if current_user.member?(@board) %>
-              <%= render 'unjoin' %>
-            <% else %>
-              <%= render 'join' %>
-            <% end %>
-          </div>
-        <% end %>
+      </div>
+    <% end %>
 
-        <div id="admins">
-          <%= render 'admins' %>
-        </div>
-        <div id="members">
-          <%= render 'members' %>
-        </div>
+    <div id="admins">
+      <h3>admins</h3>
+      <%= render 'users/users', users: @admins %>
+    </div>
+    <div id="members">
+      <h3>members</h3>
+      <%= render 'users/users', users: @users %>
+    </div>
 
-    </section>
   </aside>
 
   <aside class="col-md-8">

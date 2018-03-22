@@ -1,8 +1,0 @@
-<h3>members</h3>
-  <ul>
-    <% @board.users.each do |user| %>
-      <div>
-        <%= link_to "#{user.name}", user_path(user) %>
-      </div>
-    <% end %>
-  </ul>

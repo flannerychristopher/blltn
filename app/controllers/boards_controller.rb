@@ -14,7 +14,9 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @post = Post.new
     @posts = Post.today
-    @admins = @board.memberships.where(admin: true)
+    @users = @board.users
+    @admins = @users
+    # @admins = @users.join(:memberships).where(memberships: { admin: true } )
 
     if logged_in? && @board.users.include?(current_user)
       @membership = Membership.find_by(board_id: params[:id],
@@ -38,12 +40,19 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html { render :edit }
+      format.js { render partial: 'boards/form' }
+    end
   end
 
   def update
     if @board.update_attributes(board_params)
       flash[:success] = "Board updated"
-      redirect_to @board
+      respond_to do |formart|
+        format.html { redirect_to @board }
+        format.js { render partial: 'boards/form' }
+      end
     else
       render 'edit'
     end
