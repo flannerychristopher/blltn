@@ -3,5 +3,10 @@
   <br />
     <%= truncate board.info, length: controller_name == 'boards' ? 104 : 36 %>
   <br />
-  <small>created <%= time_ago_in_words(board.created_at) %> ago</small>
+  <small>
+    created <%= time_ago_in_words(board.created_at) %> ago
+    <% if @membership and @membership.admin? %>
+      | <%= link_to "edit board", edit_board_path(@board), remote: true %>
+    <% end %>
+  </small>
 </div>

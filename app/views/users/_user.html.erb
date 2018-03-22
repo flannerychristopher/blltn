@@ -1,3 +1,22 @@
 <div>
+
   <%= link_to user.name, user_path(user) %>
+
+  <% if controller_name == 'users' %>
+    <p>
+      <%= @user.bio %>
+    </p>
+
+    <small>
+      joined <%= time_ago_in_words(@user.created_at) %> ago
+    </small>
+
+    <% if current_user == @user %>
+      | <%= link_to "edit", edit_user_path(@user) %>
+    <% end %>
+    
+    <br /><%= image_tag @user.avatar.url if @user.avatar? %>
+  
+  <% end %>
+
 </div>

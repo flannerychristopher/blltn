@@ -5,21 +5,17 @@
 
     <div id='board'>
       <%= render @board %>
-
-      <% if @membership.admin? %>
-        <%= link_to "edit board", edit_board_path(@board), remote: true %>
-      <% end %>
     </div>
     
-    <% if logged_in? && !@membership.admin? %>
-      <div id="join_form">
+    <div id="membership">
+      <% if logged_in? && !@membership.admin? %>
         <% if current_user.member?(@board) %>
-          <%= render 'unjoin' %>
+          <%= render 'memberships/destroy' %>
         <% else %>
-          <%= render 'join' %>
+          <%= render 'memberships/create' %>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
     <div id="admins">
       <h3>admins</h3>
@@ -35,7 +31,7 @@
   <aside class="col-md-8">
 
     <% if logged_in? %>
-      <div id="post_create">
+      <div id="posts-form">
         <%= render 'shared/post_create' %>
       </div>
     <% end %>

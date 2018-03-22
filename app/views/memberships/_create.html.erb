@@ -1,4 +1,4 @@
-<%= form_with model: @membership, remote: true do |f| %>
+<%= form_with url: memberships_path, method: :post, remote: true do |f| %>
   <%= hidden_field_tag("membership[user_id]", current_user.id) %>
   <%= hidden_field_tag("membership[board_id]", @board.id) %>
   <%= f.submit "join group", class: "btn btn-primary" %>

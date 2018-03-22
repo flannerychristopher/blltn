@@ -80,25 +80,6 @@ p {
   line-height: 1.7em;
 }
 
-/* lists */
-
-ul, ol {
-  padding: 0;
-}
-li {
-  list-style: none;
-  border-bottom: 1px solid $thisgray;
-  .avatar {
-    height: auto;
-    max-height: 32px;
-    width: auto;
-    max-width: 32px;
-    border-radius: 50%;
-  }
-}
-
-
-
 /* links */
 a:hover {
   color: $success;
@@ -156,37 +137,6 @@ footer {
       vertical-align: text-top;
       float: left;
       margin: 0 2px;
-      list-style: none;
-    }
-  }
-}
-
-/* sidebar */
-
-aside {
-  section.user_info {
-    margin-top: 20px;
-  }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: 10px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-    li {
       list-style: none;
     }
   }
@@ -263,4 +213,12 @@ input {
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+// board
+#posts-form {
+  height: 180px;
+  textarea {
+    height: 75px;
+  }
 }

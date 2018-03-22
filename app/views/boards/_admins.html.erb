@@ -1,8 +1,0 @@
-<h3>admins</h3>
-  <ol>
-    <% @admins.each do |admin| %>
-      <li>
-        <%= link_to "#{admin.user.name}", user_path(admin.user.id) %>
-      </li>
-    <% end %>
-  </ol>

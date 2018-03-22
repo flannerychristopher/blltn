@@ -1,3 +1,15 @@
-<% boards.each do |board| %>
-  <%= render 'boards/board', board: board %>
+<% admin_boards = boards.joins(:memberships).where(memberships: { admin: true } ) %>
+
+<% if admin_boards.any? %>
+  <h3>admin boards</h3>
+  <% admin_boards.each do |admin_board| %>
+    <%= render 'boards/board', board: admin_board %>
+  <% end %>
+<% end %>
+
+<% if boards.any? %>
+  <h3>boards</h3>
+  <% boards.each do |board| %>
+    <%= render 'boards/board', board: board %>
+  <% end %>
 <% end %>

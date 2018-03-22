@@ -2,15 +2,12 @@ class MembershipsController < ApplicationController
   before_action :logged_in_user,    only: [:create, :destroy]
   before_action :correct_user,      only: :destroy
 
-  def new
-  end
-
   def create
     @membership = Membership.create!(membership_params)
     @board = @membership.board
     respond_to do |format|
       format.html { redirect_to @board }
-      format.js
+      format.js { render partial: 'memberships/destroy' }
     end
   end
 
@@ -19,7 +16,7 @@ class MembershipsController < ApplicationController
     @membership.destroy if !@membership.admin?
     respond_to do |format|
       format.html { redirect_to @board }
-      format.js
+      format.js { render partial: 'memberships/create' }
     end
   end
 
