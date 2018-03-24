@@ -1,0 +1,5 @@
+document.getElementById('content').innerHTML = "<%= j (
+  render  'boards/show.html', 
+          board: @board,
+          membership: @membership
+) %>";

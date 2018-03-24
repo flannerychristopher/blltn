@@ -4,24 +4,31 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
+    respond_to do |format|
+      format.js { render partial: 'boards/index.js' }
+    end
   end
 
   def new
-    @board = Board.new
+    respond_to do |format|
+      format.js { render partial: 'boards/new.js' }
+    end
   end
 
   def show
     @board = Board.find(params[:id])
     @post = Post.new
-    @posts = Post.today
-    @users = @board.users
-    @admins = @users.joins(:memberships).where(memberships: { admin: true } )
+    @posts = @board.posts.today
 
     if logged_in? && @board.users.include?(current_user)
       @membership = Membership.find_by(board_id: params[:id],
                                        user_id: current_user.id)
     else
       @membership = Membership.new
+    end
+
+    respond_to do |format|
+      format.js { render partial: 'boards/show' }
     end
 
   end
@@ -40,15 +47,14 @@ class BoardsController < ApplicationController
 
   def edit
     respond_to do |format|
-      format.html { render :edit }
-      format.js { render partial: 'boards/form' }
+      format.js { render partial: 'boards/edit.js' }
     end
   end
 
   def update
     if @board.update_attributes(board_params)
       respond_to do |format|
-        format.js { render partial: 'boards/board' }
+        format.js { render partial: 'boards/update.js' }
       end
     end
   end
@@ -56,7 +62,7 @@ class BoardsController < ApplicationController
   def destroy
     @board.destroy if !@board.nil?
     flash[:success] = "board deleted"
-    redirect_to user_path(current_user)
+    redirect_to root_url
   end
 
   private

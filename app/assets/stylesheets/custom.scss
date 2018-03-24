@@ -54,9 +54,6 @@ textarea {
 .center {
   text-align: center;
 }
-#content-body {
-  margin-top: 30px;
-}
 
 /* typography */
 
@@ -189,6 +186,15 @@ input {
 }
 
 /* flash hash messages */
+
+
+#flash {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  width: 360px;
+  z-index: 1000;
+}
 
 .alert-success {
   background-color: $success;

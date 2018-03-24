@@ -1,18 +1,34 @@
-<div class='well well-sm'>
+<div id="post-<%= post.id %>" class="well well-sm">
+
   <span><%= post.content %></span>
-  <br>
-  <span>
-    posted <%= time_ago_in_words(post.created_at) %> ago
-    to <%= link_to post.board.name, post.board %>
+  
+  <br />
+
+  <small>
+    posted: <%= time_ago_in_words(post.created_at) %> ago
+    , updated: <%= time_ago_in_words(post.updated_at) %>
+
+    <br />to <%= link_to post.board.name, post.board %>
+
     <% if post.user.avatar? %>
           <%= link_to avatar_for(post.user), size: 50 %>
     <% end %>
-  </span>
+  </small>
 
-  <% if current_user == post.user %>
-    <%= link_to "delete post", post, method: :delete,
-                                      data: { confirm: "are you sure?" },
-                                      class: 'pull-right' %>
-  <% end %>
+  <div class='pull-right'>
+    
+    <% if current_user.id == post.user.id %>
+      <%= link_to "delete", post, 
+                            method: :delete,
+                            remote: :true,
+                            data: { confirm: "are you sure?" } %>
+      <span> | </span>
+      <%= link_to "edit", edit_post_path(post), remote: :true %>
+    <% end %>
+
+    <% unless controller_name == 'users' %>
+       <strong><%= post.user.name %></strong>
+    <% end %>
+  </div>
 
 </div>

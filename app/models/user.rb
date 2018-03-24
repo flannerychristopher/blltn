@@ -47,18 +47,17 @@ class User < ApplicationRecord
 
 
 
-  def join(board)
-    self.boards << board
-  end
+  # def join(board)
+  #   self.boards << board
+  # end
 
-  def unjoin(board)
-    self.boards.delete(board)
-  end
+  # def unjoin(board)
+  #   self.boards.delete(board)
+  # end
 
   def member?(board)
     self.boards.include?(board)
   end
-
 
   private
     # limits size of uploaded avatar

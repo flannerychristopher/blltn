@@ -2,6 +2,6 @@ document.getElementById('membership').innerHTML = "<%= j (
     render 'memberships/destroy.html'
 ) %>";
 
-document.getElementById('members').innerHTML = "<%= j (
-    
+document.getElementById('users').innerHTML = "<%= j (
+    render 'users/users.html', users: @users
 ) %>";

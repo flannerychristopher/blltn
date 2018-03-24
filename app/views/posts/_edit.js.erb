@@ -1,0 +1,10 @@
+var previousElement = document.getElementById("post-<%= @post.id %>");
+
+var newElement = document.createElement("div");
+
+previousElement.replaceWith(newElement);
+
+newElement.innerHTML = "<%= j (
+    render 'posts/form.html', post: @post
+)%>";
+

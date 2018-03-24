@@ -5,17 +5,17 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.create!(membership_params)
     @board = @membership.board
+    @users = @board.users
     respond_to do |format|
-      format.html { redirect_to @board }
       format.js { render partial: 'memberships/destroy' }
     end
   end
 
   def destroy
     @board = @membership.board
-    @membership.destroy if !@membership.admin?
+    @users = @board.users
+    @membership.destroy unless @membership.admin?
     respond_to do |format|
-      format.html { redirect_to @board }
       format.js { render partial: 'memberships/create' }
     end
   end

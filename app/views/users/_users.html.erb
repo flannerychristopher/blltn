@@ -1,3 +1,13 @@
-<% users.each do |user| %>
-  <%= render 'users/user', user: user %>
+<% if select_admins(users).any? %>
+  <h3>Admins</h3>
+  <% select_admins(users).each do |user| %>
+    <%= render 'users/user.html', user: user %>
+  <% end %>
 <% end %>
+
+<h3>Users</h3>
+<% users.each do |user| %>
+  <%= render user %>
+<% end %>
+
+

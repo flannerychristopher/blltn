@@ -1,0 +1,10 @@
+var usersForm = document.getElementById("user-<%= @user.id %>");
+
+var user = document.createElement('div');
+
+usersForm.replaceWith(user);
+
+user.innerHTML = "<%= j ( render 'users/user.html', user: @user ) %>";
+
+document.getElementById('flash').innerHTML = "<%= j ( render 'shared/flash.html', flash: flash ) %>";
+

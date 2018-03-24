@@ -1,0 +1,9 @@
+var user = document.getElementById("user-<%= @user.id %>");
+
+var usersForm = document.createElement('div');
+
+user.replaceWith(usersForm);
+
+usersForm.innerHTML = "<%= j (
+  render 'users/form.html'
+)%>"

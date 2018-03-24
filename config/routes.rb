@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :users,       only: [:new, :create, :edit, :update, :show]
   resources :boards
   resources :memberships, only: [:new, :create, :destroy]
-  resources :posts,       only: [:create, :destroy]
+  resources :posts,       only: [:create, :destroy, :edit, :update]
 
 end

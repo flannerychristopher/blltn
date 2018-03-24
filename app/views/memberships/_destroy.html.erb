@@ -1,5 +1,7 @@
 <%= form_with model: @membership,
               method: :delete,
               remote: true do |f| %>
-  <%= f.submit "leave group", class: "btn btn-primary" %>
+  <%= f.submit  "leave group", 
+                class: "btn btn-primary",
+                data: { confirm: "are you sure?" } %>
 <% end %>

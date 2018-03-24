@@ -1,0 +1,7 @@
+var newPost = document.createElement('div');
+newPost.innerHTML = "<%= j(
+  render 'posts/post.html', post: @post
+)%>";
+document.getElementById('posts').prepend(newPost);
+
+document.getElementById('post-content').value = '';

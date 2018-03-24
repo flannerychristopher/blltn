@@ -4,8 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
-    @boards = @user.boards
+    respond_to do |format|
+      format.js { render partial: 'users/show.js' }
+    end
   end
 
   def new
@@ -25,15 +26,18 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    respond_to do |format|
+      format.js { render 'users/edit.js' }
+    end
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      redirect_to @user
-    else
-      render 'edit'
+    respond_to do |format|
+      if @user.update_attributes(user_params)
+        flash.now[:success] = "Profile updated"
+        format.js { render 'users/update.js'  }
+      end
     end
   end
 
